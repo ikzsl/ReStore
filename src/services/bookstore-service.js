@@ -1,14 +1,14 @@
 export default class BookstoreServices {
   data = [
     {
-      id: 1,
+      id: 101,
       title: 'Prod',
       author: 'Kolyan',
       price: 19,
       coverImage: 'https://88.img.avito.st/640x480/4963545988.jpg',
     },
     {
-      id: 2,
+      id: 102,
       title: 'Release It!',
       author: 'Tolyan',
       price: 14,
