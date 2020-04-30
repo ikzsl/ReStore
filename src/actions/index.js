@@ -10,7 +10,15 @@ export const allBooksRemovedFromCart = createAction(
   'ALL_BOOK_REMOVED_FROM_CART'
 );
 
-const fetchBooks = (bookstoreService, dispatch) => () => {
+const fetchBooksOld = (bookstoreService, dispatch) => () => {
+  dispatch(booksRequested());
+  bookstoreService
+    .getBooks()
+    .then((data) => dispatch(booksLoaded(data)))
+    .catch((err) => dispatch(booksError(err)));
+};
+
+const fetchBooks = (bookstoreService) => () => (dispatch) => {
   dispatch(booksRequested());
   bookstoreService
     .getBooks()
