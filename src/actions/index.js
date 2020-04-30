@@ -1,44 +1,14 @@
-const booksLoaded = (newBooks) => {
-  return {
-    type: 'FETCH_BOOKS_SUCCESS',
-    payload: newBooks,
-  };
-};
+import { createAction } from 'redux-actions';
 
-const booksRequested = () => {
-  return {
-    type: 'FETCH_BOOKS_REQUEST',
-  };
-};
+const booksLoaded = createAction('FETCH_BOOKS_SUCCESS');
+const booksRequested = createAction('FETCH_BOOKS_REQUEST');
+const booksError = createAction('BOOK_ADDED_TO_CART');
 
-const booksError = (error) => {
-  return {
-    type: 'FETCH_BOOKS_FAILURE',
-    payload: error,
-  };
-};
-
-export const booksAddedToCart = (bookId) => {
-  return {
-    type: 'BOOK_ADDED_TO_CART',
-    payload: bookId,
-  }
-}
-
-export const booksRemovedFromCart = (bookId) => {
-  return {
-    type: 'BOOK_REMOVED_FROM_CART',
-    payload: bookId,
-  }
-}
-
-export const allBooksRemovedFromCart = (bookId) => {
-  return {
-    type: 'ALL_BOOK_REMOVED_FROM_CART',
-    payload: bookId,
-  }
-}
-
+export const booksAddedToCart = createAction('BOOK_ADDED_TO_CART');
+export const booksRemovedFromCart = createAction('BOOK_REMOVED_FROM_CART');
+export const allBooksRemovedFromCart = createAction(
+  'ALL_BOOK_REMOVED_FROM_CART'
+);
 
 const fetchBooks = (bookstoreService, dispatch) => () => {
   dispatch(booksRequested());
@@ -49,4 +19,3 @@ const fetchBooks = (bookstoreService, dispatch) => () => {
 };
 
 export { fetchBooks };
-
